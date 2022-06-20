@@ -1,0 +1,5 @@
+urls:
+  uaa: http://localhost:8090/uaa
+  auth-service: http://localhost:8081/api
+  orders-service: http://localhost:8082/api
+  couriers-service: http://localhost:8081/api

@@ -1,0 +1,42 @@
+spring:
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: ${urls.uaa}/uaa/token_keys
+  cloud:
+    gateway:
+      routes:
+        - id: auth-service
+          uri: ${urls.auth-service}
+          predicates:
+            - Path=/api/auth/**
+          filters:
+            - RewritePath=/api/(.*)/v3/api-docs, /api/v3/api-docs
+        - id: orders-service
+          uri: ${urls.orders-service}
+          predicates:
+            - Path=/api/orders/**
+          filters:
+            - RewritePath=/api/(.*)/v3/api-docs, /api/v3/api-docs
+        - id: couriers-service
+          uri: ${urls.couriers-service}
+          predicates:
+            - Path=/api/couriers/**
+          filters:
+            - RewritePath=/api/(.*)/v3/api-docs, /api/v3/api-docs
+        - id: openapi
+          uri: http://localhost:${server.port:8080}
+          predicates:
+            - Path=/v3/api-docs/**
+          filters:
+            - RewritePath=/v3/api-docs/(?<path>.*), /api/$\{path}/v3/api-docs
+springdoc:
+  swagger-ui:
+    urls:
+      - name: auth
+        url: /v3/api-docs/auth
+      - name: orders
+        url: /v3/api-docs/orders
+      - name: couriers
+        url: /v3/api-docs/couriers
