@@ -1,0 +1,9 @@
+server:
+  port: 8081
+
+urls:
+  uaa: http://localhost:8090/uaa
+
+identity-service:
+  client-id: parcel-app
+  client-secret: secret

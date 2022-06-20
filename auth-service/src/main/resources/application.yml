@@ -1,0 +1,25 @@
+server:
+  servlet:
+    context-path: /api
+
+spring:
+  application:
+    name: auth-service
+  jackson:
+    property-naming-strategy: SNAKE_CASE
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: ${urls.uaa}/uaa/token_keys
+      client:
+        registration:
+          uaa:
+            client-id: ${identity-service.client-id}
+            client-secret: ${identity-service.client-secret}
+            authorization-grant-type: client_credentials
+            scope: scim.read,scim.write
+        provider:
+          uaa:
+            authorization-uri: ${urls.uaa}/uaa/oauth/authorize
+            token-uri: ${urls.uaa}/uaa/oauth/token

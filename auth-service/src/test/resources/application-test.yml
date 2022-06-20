@@ -1,0 +1,10 @@
+urls:
+  uaa: http://uaa
+
+identity-service:
+  client-id: client_id
+  client-secret: client_secret
+
+management:
+  endpoint:
+    enabled-by-default: false
