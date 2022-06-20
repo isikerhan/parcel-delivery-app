@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: uaa
+  labels:
+    app: uaa
+spec:
+  selector:
+    matchLabels:
+      app: uaa
+  template:
+    metadata:
+      labels:
+        app: uaa
+    spec:
+      containers:
+        - name: uaa
+          image: parcel-delivery-app/uaa:1.0.0
+          ports:
+            - containerPort: 8080
+          envFrom:
+            - configMapRef:
+                name: postgres
+            - secretRef:
+                name: postgres

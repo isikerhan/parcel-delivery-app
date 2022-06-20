@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: postgres
+data:
+  POSTGRES_SERVER: postgres:5432
+  POSTGRES_USER: parcel_app
+  POSTGRES_DB: parcel_app

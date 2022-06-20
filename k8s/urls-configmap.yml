@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: urls
+data:
+  URLS_UAA: http://uaa:8080
+  URLS_AUTH-SERVICE: http://auth-service:8080
+  URLS_ORDERS-SERVICE: http://orders-service:8080
+  URLS_COURIERS-SERVICE: http://couriers-service:8080
+  URLS_GATEWAY-PUBLIC-URL: http://localhost:30000
