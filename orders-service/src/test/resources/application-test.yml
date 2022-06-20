@@ -1,0 +1,14 @@
+spring:
+  datasource:
+    platform: h2
+    url: jdbc:h2:mem:orders
+    username: sa
+    password: password
+    driverClassName: org.h2.Driver
+  liquibase:
+    default-schema: PUBLIC
+    liquibase-schema: PUBLIC
+
+urls:
+  uaa: http://uaa
+  couriers-service: http://couriers-service

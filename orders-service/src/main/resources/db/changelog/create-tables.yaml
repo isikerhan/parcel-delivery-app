@@ -1,0 +1,213 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-delivery-order
+      author: isik.erhan
+      changes:
+        - createTable:
+            tableName: DELIVERY_ORDER
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: created_by
+                  type: nvarchar(100)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: created_date
+                  type: datetime
+                  constraints:
+                    nullable: false
+              - column:
+                  name: last_modified_by
+                  type: nvarchar(100)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: last_modified_date
+                  type: datetime
+                  constraints:
+                    nullable: false
+              - column:
+                  name: address_line1
+                  type: nvarchar(100)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: address_line2
+                  type: nvarchar(100)
+              - column:
+                  name: district
+                  type: nvarchar(100)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: city
+                  type: nvarchar(100)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: country_code
+                  type: nvarchar(100)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: zip_code
+                  type: nvarchar(100)
+              - column:
+                  name: receiver_name
+                  type: nvarchar(100)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: receiver_surname
+                  type: nvarchar(100)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: receiver_phone
+                  type: nvarchar(100)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: price
+                  type: number(10,2)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: status
+                  type: varchar(50)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: assigned_courier_id
+                  type: bigint
+  - changeSet:
+      id: create-parcel
+      author: isik.erhan
+      changes:
+        - createTable:
+            tableName: PARCEL
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: created_by
+                  type: nvarchar(100)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: created_date
+                  type: datetime
+                  constraints:
+                    nullable: false
+              - column:
+                  name: last_modified_by
+                  type: nvarchar(100)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: last_modified_date
+                  type: datetime
+                  constraints:
+                    nullable: false
+              - column:
+                  name: delivery_order_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_parcel_delivery_order
+                    references: DELIVERY_ORDER(id)
+              - column:
+                  name: type
+                  type: varchar(50)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: weight
+                  type: number(10,3)
+                  constraints:
+                    nullable: false
+  - changeSet:
+      id: create-delivery-movement
+      author: isik.erhan
+      changes:
+        - createTable:
+            tableName: DELIVERY_MOVEMENT
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: created_by
+                  type: nvarchar(100)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: created_date
+                  type: datetime
+                  constraints:
+                    nullable: false
+              - column:
+                  name: last_modified_by
+                  type: nvarchar(100)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: last_modified_date
+                  type: datetime
+                  constraints:
+                    nullable: false
+              - column:
+                  name: delivery_order_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_delivery_movement_delivery_order
+                    references: DELIVERY_ORDER(id)
+              - column:
+                  name: location_description
+                  type: nvarchar(100)
+              - column:
+                  name: latitude
+                  type: number(10,5)
+              - column:
+                  name: longitude
+                  type: number(10,5)
+              - column:
+                  name: district
+                  type: nvarchar(100)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: city
+                  type: nvarchar(100)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: country_code
+                  type: nvarchar(100)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: description
+                  type: nvarchar(1000)
+              - column:
+                  name: movement_date
+                  type: datetime
+                  constraints:
+                    nullable: false

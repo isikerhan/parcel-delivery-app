@@ -1,0 +1,21 @@
+server:
+  servlet:
+    context-path: /api
+
+spring:
+  application:
+    name: order-service
+  jackson:
+    property-naming-strategy: SNAKE_CASE
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: ${urls.uaa}/uaa/token_keys
+  liquibase:
+    default-schema: order
+    liquibase-schema: order
+  datasource:
+    url: jdbc:postgresql://${postgres.server}/parcel_app?currentSchema=order
+    username: ${postgres.user}
+    password: ${postgres.password}
