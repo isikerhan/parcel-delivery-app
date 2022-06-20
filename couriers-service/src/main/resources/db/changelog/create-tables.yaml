@@ -1,0 +1,52 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-courier
+      author: isik.erhan
+      changes:
+        - createTable:
+            tableName: COURIER
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: created_by
+                  type: nvarchar(100)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: created_date
+                  type: datetime
+                  constraints:
+                    nullable: false
+              - column:
+                  name: last_modified_by
+                  type: nvarchar(100)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: last_modified_date
+                  type: datetime
+                  constraints:
+                    nullable: false
+              - column:
+                  name: user_id
+                  type: char(36)
+                  constraints:
+                    nullable: false
+                    unique: true
+                    uniqueConstraintName: uq_courier_user_id
+              - column:
+                  name: type
+                  type: nvarchar(50)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: status
+                  type: nvarchar(50)
+                  constraints:
+                    nullable: false

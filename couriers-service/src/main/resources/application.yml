@@ -1,0 +1,21 @@
+server:
+  servlet:
+    context-path: /api
+
+spring:
+  application:
+    name: couriers-service
+  jackson:
+    property-naming-strategy: SNAKE_CASE
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: ${urls.uaa}/uaa/token_keys
+  liquibase:
+    default-schema: courier
+    liquibase-schema: courier
+  datasource:
+    url: jdbc:postgresql://${postgres.server}/parcel_app?currentSchema=courier
+    username: ${postgres.user}
+    password: ${postgres.password}

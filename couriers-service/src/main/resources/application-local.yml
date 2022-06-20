@@ -1,0 +1,11 @@
+server:
+  port: 8083
+
+urls:
+  uaa: http://localhost:8090/uaa
+  auth-service: http://localhost:8081/api
+
+postgres:
+  server: localhost:5432
+  user: parcel_app
+  password: secret
