@@ -1,7 +1,7 @@
-call .\gradlew.bat bootJar -x test -p .\gateway
-call .\gradlew.bat bootJar -x test -p .\auth-service
-call .\gradlew.bat bootJar -x test -p .\orders-service
-call .\gradlew.bat bootJar -x test -p .\couriers-service
+pushd .\gateway && call .\gradlew.bat bootJar -x test && popd
+pushd .\auth-service && call .\gradlew.bat bootJar -x test && popd
+pushd .\orders-service && call .\gradlew.bat bootJar -x test && popd
+pushd .\couriers-service && call .\gradlew.bat bootJar -x test && popd
 
 docker build --tag parcel-delivery-app/uaa:1.0.0 .\uaa
 docker build --tag parcel-delivery-app/gateway:1.0.0 .\gateway
